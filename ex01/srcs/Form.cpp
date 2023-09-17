@@ -1,12 +1,12 @@
 # include "../includes/Form.hpp"
 
-Form::Form() : _name("Blue"), _gradeToSigned(150), _gradeToEx(150) , _isSigned(false)
+Form::Form() : _name("Blue"), _isSigned(false), _gradeToSigned(150), _gradeToEx(150)
 {
 	std::cout << GREEN << "Form default constructor called" << RESET << std::endl;
 	return;
 }
 
-Form::Form(std::string name, int gradeToSigned, int gradeToEx) : _name(name), _gradeToSigned(gradeToSigned), _gradeToEx(gradeToEx), _isSigned(false)
+Form::Form(std::string name, int gradeToSigned, int gradeToEx) : _name(name), _isSigned(false), _gradeToSigned(gradeToSigned), _gradeToEx(gradeToEx)
 {
 	std::cout << GREEN << "Form parametric constructor called" << RESET << std::endl;
 	if (gradeToSigned < 1 || gradeToEx < 1 )
@@ -16,7 +16,7 @@ Form::Form(std::string name, int gradeToSigned, int gradeToEx) : _name(name), _g
 	return;
 }
 
-Form::Form(Form const& other) : _name(other._name), _gradeToSigned(other._gradeToSigned), _gradeToEx(other._gradeToEx), _isSigned(other._isSigned)
+Form::Form(Form const& other) : _name(other._name), _isSigned(other._isSigned), _gradeToSigned(other._gradeToSigned), _gradeToEx(other._gradeToEx)
 {
 	std::cout << GREEN << "Form copy constructor called" << RESET << std::endl;
 	return;
@@ -45,12 +45,12 @@ bool	Form::getBool(void) const
 	return (this->_isSigned);
 }
 
-int const	Form::getGradeToS(void) const
+int	Form::getGradeToS(void) const
 {
 	return (this->_gradeToSigned);
 }
 
-int const	Form::getGradeToE(void) const
+int	Form::getGradeToE(void) const
 {
 	return (this->_gradeToEx);
 }

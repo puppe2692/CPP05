@@ -6,7 +6,7 @@
 /*   By: nwyseur <nwyseur@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 14:22:03 by nwyseur           #+#    #+#             */
-/*   Updated: 2023/09/15 16:22:43 by nwyseur          ###   ########.fr       */
+/*   Updated: 2023/09/18 12:27:54 by nwyseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,17 +75,30 @@ void	Bureaucrat::decreaseGrade(void)
 		this->_grade++;
 }
 
-void	Bureaucrat::signedForm(Form& form) const
+void	Bureaucrat::signedForm(AForm& form) const
 {
-	if (this->_grade > form.getGradeToS())
-	{
-		std::cout << this->_name << " couldn’t sign " << form.getName() << " because his grade is too low" << std::endl; 
-		return;
-	}
-	else
+	try
 	{
 		form.beSigned(*this);
-		std::cout << this->_name << " signed " << form.getName() << std::endl;
+		std::cout << GREEN << this->_name << " signs " << form.getName() << RESET << std::endl;
+	}
+	catch(const std::exception &e)
+	{
+		std::cout << RED << this->_name << " cannot sign " << form.getName() <<  " because " << e.what() << RESET << std::endl;
+	}
+	
+}
+
+void	Bureaucrat::executeForm(AForm const & form)
+{
+	try
+	{
+		form.execute(*this);
+		std::cout << GREEN << this->_name << " executed " << form.getName() << RESET << std::endl;
+	}
+	catch(const std::exception &e)
+	{
+		std::cout << RED << this->_name << " cannot execute " << form.getName() <<  " because " << e.what() << RESET << std::endl;
 	}
 }
 

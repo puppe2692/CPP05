@@ -24,8 +24,19 @@ class PresidentialPardonForm : public AForm
 
 		std::string getTarget();
 
+		void execute(Bureaucrat const & executor) const;
+
 	private :
 		std::string _target;
+	
+	class GradeTooLowExceptionExec : public std::exception
+	{
+		public:
+			virtual const char* what() const throw()
+			{
+				return ("Presidential::exception : Grade is too Low to exec");
+			}
+	};
 };
 
 

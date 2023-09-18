@@ -54,7 +54,7 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 		}
 		else
 		{
-			outfile <<    "             ,@@@@@@@,            "    << std::endl;
+			outfile << "             ,@@@@@@@,            "    << std::endl;
 			outfile << "     ,,,.   ,@@@@@@/@@,  .oo8888o."    << std::endl;
 			outfile << "  ,&%%&%&&%,@@@@@/@@@@@@,888\\88//8o"    << std::endl;
 			outfile << " ,%&\\%&%&&%,@@\\@@@//@@@88\\8888//888'"    << std::endl;

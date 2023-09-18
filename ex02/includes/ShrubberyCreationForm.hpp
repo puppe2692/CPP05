@@ -35,15 +35,6 @@ class ShrubberyCreationForm : public AForm
 				}
 		};
 
-		class GradeTooLowExceptionSign : public std::exception
-		{
-			public:
-				virtual const char* what() const throw()
-				{
-					return ("Shrubbery::exception : Grade is too Low to sign");
-				}
-		};
-
 	private :
 		std::string _target;
 };

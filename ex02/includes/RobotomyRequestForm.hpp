@@ -24,6 +24,17 @@ class RobotomyRequestForm : public AForm
 
 		std::string getTarget();
 
+		void execute(Bureaucrat const & executor) const;
+
+		class GradeTooLowExceptionExec : public std::exception
+		{
+			public:
+				virtual const char* what() const throw()
+				{
+					return ("Robotomy::exception : Grade is too Low to exec");
+				}
+		};
+
 	private :
 		std::string _target;
 };

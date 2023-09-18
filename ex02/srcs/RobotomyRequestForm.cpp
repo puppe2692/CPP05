@@ -35,3 +35,19 @@ std::string RobotomyRequestForm::getTarget()
 {
 	return(this->_target);
 }
+
+void RobotomyRequestForm::execute(Bureaucrat const & executor) const
+{
+	if ( executor.getGrade() < this->getGradeToE())
+		throw (GradeTooLowExceptionExec());
+	else
+	{
+		std::cout << this->_target << " BZZZZZ Brrrrr BRRR BZzZ Briiit" << std::endl;
+		std::srand(std::time(nullptr));
+		int random_variable = std::rand();
+		if (random_variable % 2 == 0)
+			std::cout << this->_target << " robotomization is a complete success" << std::endl;
+		else
+			std::cout << this->_target << " robotomization is a failure" << std::endl;
+	}
+}

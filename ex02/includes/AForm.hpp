@@ -15,7 +15,9 @@
 
 # include <iostream>
 # include <string>
-#include <fstream>
+# include <fstream>
+# include <cstdlib>
+# include <ctime>
 # include "Bureaucrat.hpp"
 
 # define RED "\e[0;31m"

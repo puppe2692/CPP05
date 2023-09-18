@@ -6,7 +6,7 @@
 #    By: nwyseur <nwyseur@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/28 21:18:35 by nwyseur           #+#    #+#              #
-#    Updated: 2023/09/17 14:37:13 by nwyseur          ###   ########.fr        #
+#    Updated: 2023/09/18 12:39:39 by nwyseur          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,10 +14,16 @@ NAME		:= Bureaucrat
 
 SRCS_FILES	:= main.cpp \
 				Bureaucrat.cpp \
-				Form.cpp \
+				AForm.cpp \
+				PresidentialPardonForm.cpp \
+				RobotomyRequestForm.cpp \
+				ShrubberyCreationForm.cpp \
 
 HEADER_FILE	:= Bureaucrat.hpp \
-				Form.hpp \
+				AForm.hpp \
+				PresidentialPardonForm.hpp \
+				RobotomyRequestForm.hpp \
+				ShrubberycreationForm.hpp \
 
 SRCS_DIR	:= ./srcs/
 INC_DIR		:= ./includes/

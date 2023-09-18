@@ -12,9 +12,10 @@ PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("Pres
 	return;
 }
 
-PresidentialPardonForm::PresidentialPardonForm() : AForm("Presidential", 25, 5)
+PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const& other)
 {
 	std::cout << GREEN << "Presidential copy constructor called" << RESET << std::endl;
+	*this = other;
 	return;
 }
 
@@ -38,7 +39,9 @@ std::string PresidentialPardonForm::getTarget()
 
 void PresidentialPardonForm::execute(Bureaucrat const & executor) const
 {
-	if ( executor.getGrade() < this->getGradeToE())
+	if (this->getBool() == false)
+		throw (FormNotSignedExec());
+	else if ( executor.getGrade() > this->getGradeToE())
 		throw (GradeTooLowExceptionExec());
 	else
 	{

@@ -6,7 +6,7 @@
 /*   By: nwyseur <nwyseur@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 12:27:42 by nwyseur           #+#    #+#             */
-/*   Updated: 2023/09/18 12:11:26 by nwyseur          ###   ########.fr       */
+/*   Updated: 2023/09/18 12:36:18 by nwyseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ class Bureaucrat
 
 		void		increaseGrade(void);
 		void		decreaseGrade(void);
-		void		signedForm(AForm& form) const;
+		void		signForm(AForm& form) const;
 
 		void		executeForm(AForm const & form);
 

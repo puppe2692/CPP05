@@ -6,7 +6,7 @@
 /*   By: nwyseur <nwyseur@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 14:22:03 by nwyseur           #+#    #+#             */
-/*   Updated: 2023/09/18 12:27:54 by nwyseur          ###   ########.fr       */
+/*   Updated: 2023/09/18 14:23:11 by nwyseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ Bureaucrat::Bureaucrat(void) : _name("John")
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name)
 {
 	std::cout << GREEN << "Bureaucrat parameter constructor called" << RESET << std::endl;
-	if (grade >= 150)
+	if (grade > 150)
 		throw (Bureaucrat::GradeTooLowException());
-	if (grade <= 1)
+	if (grade < 1)
 		throw (Bureaucrat::GradeTooHighException());
 	this->_grade = grade;
 	return ;
@@ -75,7 +75,7 @@ void	Bureaucrat::decreaseGrade(void)
 		this->_grade++;
 }
 
-void	Bureaucrat::signedForm(AForm& form) const
+void	Bureaucrat::signForm(AForm& form) const
 {
 	try
 	{

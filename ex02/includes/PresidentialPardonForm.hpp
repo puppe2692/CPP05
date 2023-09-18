@@ -37,6 +37,15 @@ class PresidentialPardonForm : public AForm
 				return ("Presidential::exception : Grade is too Low to exec");
 			}
 	};
+
+	class FormNotSignedExec : public std::exception
+	{
+		public:
+			virtual const char* what() const throw()
+			{
+				return ("Presidential::exception : Form is not signed");
+			}
+	};
 };
 
 

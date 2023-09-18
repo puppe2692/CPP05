@@ -12,9 +12,10 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("Shrubb
 	return;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm() : AForm("Shrubbery", 145, 137)
+ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const& other)
 {
 	std::cout << GREEN << "Shrubbery copy constructor called" << RESET << std::endl;
+	*this = other;
 	return;
 }
 
@@ -41,7 +42,9 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 	std::ofstream	outfile;
 	std::string		filename;
 
-	if ( executor.getGrade() < this->getGradeToE())
+	if (this->getBool() == false)
+		throw (FormNotSignedExec());
+	else if ( executor.getGrade() > this->getGradeToE())
 		throw (GradeTooLowExceptionExec());
 	else
 	{

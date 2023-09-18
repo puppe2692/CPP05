@@ -6,190 +6,57 @@
 /*   By: nwyseur <nwyseur@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 16:43:45 by nwyseur           #+#    #+#             */
-/*   Updated: 2023/09/17 14:43:32 by nwyseur          ###   ########.fr       */
+/*   Updated: 2023/09/18 14:43:47 by nwyseur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Bureaucrat.hpp" 
-#include "../includes/Form.hpp"
+#include "../includes/Bureaucrat.hpp"
+#include "../includes/ShrubberyCreationForm.hpp"
+#include "../includes/RobotomyRequestForm.hpp"
+#include "../includes/PresidentialPardonForm.hpp"
+#include <iomanip>
 
-void basicTest(void)
+int	main(void)
 {
-	std::cout << "----Basic Test----" << std::endl;
-	Bureaucrat Bureaucrat("Ricky", 10);
-	std::cout << Bureaucrat << std::endl;
-	Bureaucrat.decreaseGrade();
-	std::cout << Bureaucrat << std::endl;
-	Bureaucrat.increaseGrade();
-	std::cout << Bureaucrat << std::endl;
+	srand(time(NULL));
 
-}
+	std::cout << "----Shrubbery Creation----" << std::endl;
+	AForm		*shrub = new ShrubberyCreationForm("home");
+	Bureaucrat	corr("Correcteur", 1);
+	Bureaucrat	me("Kevin", 140);
 
-void tooLowCrea(void)
-{
-	std::cout << "----Low Test Crea----" << std::endl;
-	Bureaucrat Bureaucrat("Johnny", 0);
-}
+	corr.executeForm(*shrub);
+	corr.signForm(*shrub);
+	std::cout << *shrub << std::endl;
+	std::cout << corr << std::endl;
+	corr.executeForm(*shrub);
+	me.executeForm(*shrub);
+	delete shrub;
 
-void tooLowInc(void)
-{
-	std::cout << "----Low Test----" << std::endl;
-	Bureaucrat Bureaucrat("Johnny", 1);
-}
 
-void tooHighDec(void)
-{
-	std::cout << "----high Test----" << std::endl;
-	Bureaucrat Bureaucrat("Johnny", 150);
-	Bureaucrat.decreaseGrade();
-}
+	std::cout << "----Robotomy Request----" << std::endl;
+	AForm		*robotomy = new RobotomyRequestForm("Correcteur");
+	Bureaucrat	me2("Herve", 1);
 
-void tooHighCrea(void)
-{
-	std::cout << "----high Test Crea----" << std::endl;
-	Bureaucrat Bureaucrat("Johnny", 151);
-}
-
-///////////////////////////////////////////////////////////////////////////////
-
-void basicTestF(void)
-{
-	std::cout << "----Basic Test Form ----" << std::endl;
-	Form form("Red", 10, 9);
-	Bureaucrat bureaucrat("Ricky Cleg", 8);
-	std::cout << form << std::endl;
-	bureaucrat.signedForm(form);
-	std::cout << form << std::endl;
-}
-
-void tooLowCreaF(void)
-{
-	std::cout << "----Low signed Test form----" << std::endl;
-	Form form("Yellow", 0, 10);
-}
-
-void tooHighCreaF(void)
-{
-	std::cout << "----high exec Test form----" << std::endl;
-	Form form("Yellow", 10, 151);
-}
-
-void tooLowCreaE(void)
-{
-	std::cout << "----Low exec Test form----" << std::endl;
-	Form form("Yellow", 10, 0);
-}
-
-void tooHighCreaE(void)
-{
-	std::cout << "----high exec Test form----" << std::endl;
-	Form form("Yellow", 151, 10);
-}
-
-void signedTestF(void)
-{
-	std::cout << "----signed Test Form ----" << std::endl;
-	Form form("Green", 10, 9);
-	Bureaucrat bureaucrat("Ricky Gervais", 11);
-	std::cout << form << std::endl;
-	bureaucrat.signedForm(form);
-	std::cout << form << std::endl;
-}
-
-int main(void)
-{
-
-	std::cout << "---- Test Bureaucrat ----" << std::endl;
-	try
-	{
-		basicTest();
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-	try
-	{
-		tooLowCrea();
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-	try
-	{
-		tooLowInc();
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-	try
-	{
-		tooHighCrea();
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-	try
-	{
-		tooHighDec();
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-
-	std::cout << "---- Test Form ----" << std::endl;
+	me2.executeForm(*robotomy);
+	me2.signForm(*robotomy);
+	me2.executeForm(*robotomy);
 	
-	try
-	{
-		basicTestF();
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-	try
-	{
-		tooLowCreaF();
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-	try
-	{
-		tooHighCreaF();
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-		try
-	{
-		tooLowCreaE();
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-	try
-	{
-		tooHighCreaE();
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-	try
-	{
-		signedTestF();
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
+	me2.executeForm(*robotomy);
+	me2.executeForm(*robotomy);
+	me2.executeForm(*robotomy);
+	delete robotomy;
+	
+	std::cout << "----Presidential Pardon----" << std::endl;
+	AForm		*presidential = new PresidentialPardonForm("Correcteur");
+	Bureaucrat	me3("Rayan", 6);
 
+	me3.executeForm(*presidential);
+	me3.signForm(*presidential);
+	me3.executeForm(*presidential);
+	me3.increaseGrade();
+	me3.executeForm(*presidential);
+	delete presidential;
+
+	return (0);
 }

@@ -35,6 +35,15 @@ class RobotomyRequestForm : public AForm
 				}
 		};
 
+		class FormNotSignedExec : public std::exception
+		{
+			public:
+				virtual const char* what() const throw()
+				{
+					return ("Robotomy::exception : Form is not signed");
+				}
+		};
+
 	private :
 		std::string _target;
 };
